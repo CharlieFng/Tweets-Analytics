@@ -1,0 +1,773 @@
+<!-- 
+TEAM 18
+YAO PAN
+777241
+MIN-YING CHEN
+779101
+JINGFENG ZHANG
+755121
+SIYU FENG
+745399
+LIANYU ZENG
+733863
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="media/aus.png">
+<title>Victoria Politician Twitter Activities | Team 18</title>
+<meta name="description" content="COMP90024 Assignment 2 - team18">
+<!-- Bootstrap core CSS -->
+<link href="assets/css/bootstrap.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="assets/css/main.css" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/icomoon.css">
+<link href="assets/css/animate-custom.css" rel="stylesheet">
+<script type="text/javascript" src="assets/js/loader.js"></script>
+<link
+	href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic'
+	rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700'
+	rel='stylesheet' type='text/css'>
+<script src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/modernizr.custom.js"></script>
+<script type="text/javascript" src="assets/js/canvasjs.min.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+<script type="text/javascript">
+//Canvas JS chart
+	window.onload = function() {
+		var chart = new CanvasJS.Chart(
+				"chartContainer1",
+				{
+					title : {
+						text : ""
+					},
+					animationEnabled : true,
+					data : [ {
+						type : "doughnut",
+						startAngle : 60,
+						toolTipContent : "{legendText}: {y} Seats - <strong>#percent% </strong>",
+						showInLegend : true,
+						dataPoints : [ {
+							y : 19,
+							indexLabel : "Labor #percent%",
+							legendText : "Labor"
+						}, {
+							y : 14,
+							indexLabel : "Liberal #percent%",
+							legendText : "Liberal"
+						}, {
+							y : 2,
+							indexLabel : "National #percent%",
+							legendText : "National"
+						}, {
+							y : 1,
+							indexLabel : "Greens #percent%",
+							legendText : "Greens"
+						}, {
+							y : 1,
+							indexLabel : "Independent #percent%",
+							legendText : "Independent"
+						} ]
+					} ]
+				});
+		chart.render();
+	}
+</script>
+
+<script type="text/javascript">
+	// Load the Visualization API and the piechart package.
+	google.load('visualization', '1.0', {
+		'packages' : [ 'corechart' ]
+	});
+
+	// Set a callback to run when the Google Visualization API is loaded.
+	google.setOnLoadCallback(drawChart);
+
+	// Callback that creates and populates a data table,
+	// instantiates the pie chart, passes in the data and
+	// draws it.
+	function drawChart() {
+
+		// Create the data table.
+		var data = new google.visualization.DataTable();
+		data.addColumn('string', 'Party');
+		data.addColumn('number', 'Tweet');
+		data.addRows([ [ 'Labor', 88471 ], [ 'Liberal', 17319 ],
+				[ 'National', 6180 ], [ 'Greens', 8169 ],
+				[ 'Independent', 3547 ] ]);
+		// Create the data table.
+		var data2 = new google.visualization.DataTable();
+		data2.addColumn('string', 'Party');
+		data2.addColumn('number', 'Follower');
+		data2.addRows([ [ 'Labor', 210818 ], [ 'Liberal', 130318 ],
+				[ 'National', 7476 ], [ 'Greens', 92200 ],
+				[ 'Independent', 16600 ] ]);
+
+		var data3 = new google.visualization.DataTable();
+		data3.addColumn('string', 'Party');
+		data3.addColumn('number', 'Member');
+		data3.addRows([ [ 'Labor', 13 ], [ 'Liberal', 12 ], [ 'National', 2 ],
+				[ 'Greens', 1 ], [ 'Independent', 1 ] ]);
+
+		var data4 = google.visualization.arrayToDataTable([
+				[ 'Party', 'Tweets#', 'Folloers' ], [ 'Labor', 88471, 210818 ],
+				[ 'Liberal', 17319, 130318 ], [ 'National', 6180, 7476 ],
+				[ 'Greens', 8169, 92200 ], [ 'Independent', 3547, 16600 ] ]);
+
+		var data5 = google.visualization.arrayToDataTable([
+				[ 'Party', 'Seats', 'Has Twitter' ], [ 'Labor', 19, 13 ],
+				[ 'Liberal', 14, 12 ], [ 'National', 2, 2 ],
+				[ 'Greens', 1, 1 ], [ 'Independent', 1, 1 ] ]);
+
+		// Set chart options
+		var options = {
+			'width' : 600,
+			'height' : 400
+		};
+
+		// Instantiate and draw our chart, passing in some options.
+		var chart = new google.visualization.ColumnChart(document
+				.getElementById('chartContainer2'));
+		chart.draw(data, options);
+		var chart2 = new google.visualization.ColumnChart(document
+				.getElementById('chartContainer3'));
+		chart2.draw(data2, options);
+		var chart3 = new google.visualization.ColumnChart(document
+				.getElementById('chartContainer4'));
+		chart3.draw(data3, options);
+		var chart4 = new google.visualization.BarChart(document
+				.getElementById('chartContainer5'));
+		chart4.draw(data4, options);
+		var chart5 = new google.visualization.BarChart(document
+				.getElementById('chartContainer6'));
+		chart5.draw(data5, options);
+
+	}
+</script>
+
+
+</head>
+
+<body data-spy="scroll" data-offset="0" data-target="#navbar-main">
+
+
+	<div id="navbar-main">
+		<!-- Fixed navbar -->
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".navbar-collapse">
+						<img src="media/bar-menu.png" style="width: 30px; height: 30px;">
+
+					</button>
+
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="index.html#home" class="smoothScroll">Home</a></li>
+						<li><a href="#about" class="smoothScroll"> About</a></li>
+						<li><a href="#team" class="smoothScroll"> Team</a></li>
+						<li><a href="#overview" class="smoothScroll"> Overview</a></li>
+
+						<li><a href="atsign.html" class="smoothScroll">Result</a></li>
+
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+
+			</div>
+		</div>
+	</div>
+
+
+
+	<!-- ==== HEADERWRAP ==== -->
+	<div id="headerwrap" id="home" name="home">
+		<header class="clearfix">
+			<h1>
+				<img src="media/twitter-512.png"
+					style="width: 120px; height: 120px;">
+			</h1>
+			<p>Victoria Politician</p>
+			<p>Twitter Activities</p>
+		</header>
+	</div>
+	<!-- /headerwrap -->
+
+
+
+	<!-- ==== ABOUT ==== -->
+	<div class="container" id="about" name="about">
+		<div class="row white">
+			<br>
+			<h1 class="centered">About</h1>
+			<hr>
+
+			<div class="col-lg-6">
+				<p>
+					A cloud based solution was developed using the National eResearch
+					Collaboration Tools and Resources (NeCTAR) online infrastructure.
+					An auto dynamic deployment script for this solution was developed
+					in Ansible.<br />In total of sixteen harvesters were working in
+					parallel and collected around 50G of Tweets from Twitter REST API
+					and Twitter Streaming API by the harvesters. The tweets were saved
+					to a centralized CouchDB database and replicated to the backup
+					server.
+
+
+				</p>
+			</div>
+			<!-- col-lg-6 -->
+
+			<div class="col-lg-6">
+				<p>
+					Five scenarios were created to analyze the Twitter activities of
+					the Federal Members of Parliament and their followers. Two
+					scenarios were created to analyze the Twitter activities of the
+					general public. The project also compares the result with data from
+					AURIN. The analysis also covers the prediction of voting intention
+					for the Federal Election 2016.<br />A backup server works alongside
+					the main server which replicates the database from the main server.
+					A DNS based active failover is enabled for high availability, user
+					will be redirect to the backup server when the main server goes
+					down, this progress is user transparent.
+				</p>
+			</div>
+			<!-- col-lg-6 -->
+		</div>
+		<!-- row -->
+	</div>
+	<!-- container -->
+
+	<!-- ==== SECTION DIVIDER1 -->
+	<section class="section-divider textdivider divider1">
+		<div class="container">
+			<h1>Politics is the Art of the Possible</h1>
+			<hr>
+			<p>- Otto von Bismarck</p>
+		</div>
+		<!-- container -->
+	</section>
+	<!-- section -->
+
+
+	<!-- ==== TEAM MEMBERS ==== -->
+	<div class="container" id="team" name="team">
+		<br>
+		<div class="row white centered">
+			<h1 class="centered">MEET OUR TEAM</h1>
+			<hr>
+			<br> <br>
+			<div class="col-lg-3 centered">
+				<img class="img img-circle" src="assets/img/team/team01.jpg"
+					height="120px" width="120px" alt=""> <br>
+				<h4>
+					<b>Yao Pan</b>
+				</h4>
+				777241<br />Team leader, data collection, documenting and enviroment
+				setup
+
+			</div>
+			<!-- col-lg-3 -->
+
+			<div class="col-lg-3 centered">
+				<img class="img img-circle" src="assets/img/team/team02.jpg"
+					height="120px" width="120px" alt=""> <br>
+				<h4>
+					<b>Lian Yu Zeng</b>
+				</h4>
+				733863<br />Sentiment generator design, Aurin analyse and video
+				editing
+
+			</div>
+
+
+			<!-- col-lg-3 -->
+
+			<div class="col-lg-3 centered">
+				<img class="img img-circle" src="assets/img/team/team04.jpg"
+					height="120px" width="120px" alt=""> <br>
+				<h4>
+					<b>Si Yu Feng</b>
+				</h4>
+				745399<br />Ansible automation and data analyse
+
+			</div>
+
+
+
+			<!-- col-lg-3 -->
+
+			<div class="col-lg-3 centered">
+				<img class="img img-circle" src="assets/img/team/team03.jpg"
+					height="120px" width="120px" alt=""> <br>
+				<h4>
+					<b>Jing Feng Zhang</b>
+				</h4>
+				755121<br />List function, CouchDB view design and tester
+
+			</div>
+
+			<!-- col-lg-3 -->
+
+			<div class="col-lg-3 centered">
+				<img class="img img-circle" src="assets/img/team/team05.jpg"
+					height="120px" width="120px" alt=""> <br>
+				<h4>
+					<b>Min-Ying Chen</b>
+				</h4>
+				779101<br />Web application
+
+			</div>
+			<!-- col-lg-3 -->
+
+		</div>
+		<!-- row -->
+	</div>
+	<!-- container -->
+
+
+
+	<!-- ==== overview ==== -->
+	<div class="container" id="overview" name="overview"></div>
+	<br>
+	<div class="row">
+		<br>
+		<h1 class="centered">Overview</h1>
+		<hr>
+		<br> <br>
+	</div>
+	<!-- /row -->
+	<div class="container">
+		<div class="row">
+
+			<!-- PORTFOLIO IMAGE 1 -->
+			<div class="col-md-4 ">
+				<div class="grid mask">
+					<figure>
+						<img class="img-responsive" src="media/fd-in-vic.png" alt="">
+						<figcaption>
+
+							<a data-toggle="modal" href="#chart1"
+								class="btn btn-primary btn-lg">Take a Look</a>
+						</figcaption>
+						<!-- /figcaption -->
+					</figure>
+					<!-- /figure -->
+				</div>
+				<!-- /grid-mask -->
+			</div>
+			<!-- /col -->
+
+
+			<!-- arties &amp; Federal MPs in Victoria -->
+
+			<div class="modal fade" id="chart1" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+							<h4 class="modal-title">Parties &amp; Federal MPs in
+								Victoria</h4>
+						</div>
+						<div class="modal-body">
+
+
+							<div class="img-responsive" id="chartContainer1"
+								style="height: 400px; width: 600px;"></div>
+							<p>&nbsp;</p>
+							<p>In 2016, we have 37 MPs in Victoria. The doughnut graphic
+								above shows each party's seats in the Parliament. We can see the
+								major one is Labor, which weight is more than 50%, second is
+								Liberal and the rest of parties' weight are around only 10%</p>
+
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Close</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<!-- /.modal -->
+
+
+			<!-- Amount of Tweets of each parties -->
+			<div class="col-md-4">
+				<div class="grid mask">
+					<figure>
+						<img class="img-responsive" src="media/love-tweets.png" alt="">
+						<figcaption>
+
+							<a data-toggle="modal" href="#chart2"
+								class="btn btn-primary btn-lg">Find out more</a>
+						</figcaption>
+						<!-- /figcaption -->
+					</figure>
+					<!-- /figure -->
+				</div>
+				<!-- /grid-mask -->
+			</div>
+			<!-- /col -->
+
+
+			<!-- Pop-up window with result -->
+			<div class="modal fade" id="chart2" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+							<h4 class="modal-title">Amount of Tweets of each parties</h4>
+						</div>
+						<div class="modal-body">
+							<div id="chartContainer2"
+								style="height: 400px; width: 400px; z-index: 999;"></div>
+							<p style="clear: both">&nbsp;</p>
+							<p>Labor party has the highest Tweets amount. One funny fact
+								is Green party which has only 1 MP in Victoria, but he has
+								Tweeted 8169 times.</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Close</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<!-- /.modal -->
+
+			<!-- How many Twitter followers do each parties have? -->
+			<div class="col-md-4">
+				<div class="grid mask">
+					<figure>
+						<img class="img-responsive" src="media/how-many-followers.png"
+							alt="">
+						<figcaption>
+
+							<a data-toggle="modal" href="#chart3"
+								class="btn btn-primary btn-lg">Take a Look</a>
+						</figcaption>
+						<!-- /figcaption -->
+					</figure>
+					<!-- /figure -->
+				</div>
+				<!-- /grid-mask -->
+			</div>
+			<!-- /col -->
+
+
+
+			<div class="modal fade" id="chart3" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+							<h4 class="modal-title">How many Twitter followers do each
+								parties have?</h4>
+						</div>
+						<div class="modal-body">
+							<div id="chartContainer3" style="height: 400px; width: 100%;"></div>
+							<p>&nbsp;</p>
+							<p>According to graphic above, even though Labor party has 6
+								times of Tweets more than Liberal party, their followers do not
+								show the same ratio. There is only 1 MP in Green party, but he
+								has 92200 followers.</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Close</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<!-- /.modal -->
+
+
+
+
+		</div>
+		<!-- /row -->
+
+		<!-- Not all MPs Using Twitter -->
+		<div class="row">
+			<div class="col-md-4 ">
+				<div class="grid mask">
+					<figure>
+						<img class="img-responsive" src="media/have-twitter2.png" alt="">
+						<figcaption>
+							<h5></h5>
+							<a data-toggle="modal" href="#chart4"
+								class="btn btn-primary btn-lg">Check Out</a>
+						</figcaption>
+						<!-- /figcaption -->
+					</figure>
+					<!-- /figure -->
+				</div>
+				<!-- /grid-mask -->
+			</div>
+			<!-- /col -->
+
+
+
+			<div class="modal fade" id="chart4" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+							<h4 class="modal-title">Not all MPs Using Twitter</h4>
+						</div>
+						<div class="modal-body">
+							<div id="chartContainer4" style="height: 400px; width: 100%;"></div>
+							<p>&nbsp;</p>
+							<p>Some MPs are not a fan of SNS. In fact, nine MPs in
+								Victoria don't have a Twitter account.</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Close</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<!-- /.modal -->
+
+
+
+			<!-- Federal MPs in Victoria -->
+			<div class="col-md-4">
+				<div class="grid mask">
+					<figure>
+						<img class="img-responsive" src="media/mixup.png" alt="">
+						<figcaption>
+							<h5></h5>
+							<a data-toggle="modal" href="#chart5"
+								class="btn btn-primary btn-lg">Take a Look</a>
+						</figcaption>
+						<!-- /figcaption -->
+					</figure>
+					<!-- /figure -->
+				</div>
+				<!-- /grid-mask -->
+			</div>
+			<!-- /col -->
+
+
+
+			<div class="modal fade" id="chart5" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+							<h4 class="modal-title">Federal MPs in Victoria</h4>
+						</div>
+						<div class="modal-body">
+							<div id="chartContainer5" style="height: 400px; width: 100%;"></div>
+							<div id="chartContainer6" style="height: 400px; width: 100%;"></div>
+							<p>&nbsp;</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Close</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<!-- /.modal -->
+
+
+
+			<!-- Fun Facts -->
+			<div class="col-md-4">
+				<div class="grid mask">
+					<figure>
+						<img class="img-responsive" src="media/funfacts.png" alt="">
+						<figcaption>
+							<h5></h5>
+							<a data-toggle="modal" href="#chart6"
+								class="btn btn-primary btn-lg">Take a Look</a>
+						</figcaption>
+						<!-- /figcaption -->
+					</figure>
+					<!-- /figure -->
+				</div>
+				<!-- /grid-mask -->
+			</div>
+			<!-- /col -->
+
+
+
+			<div class="modal fade" id="chart6" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+							<h4 class="modal-title">Fun Facts</h4>
+						</div>
+						<div class="modal-body">
+							<p>By analysing the Tweets from the politicians, we found the
+								following fun facts.</p>
+							<ul>
+								<li><b>Sunday is a day off.</b><br /> None of the
+									politicians ever tweeted on Sundays.</li>
+
+								<li><b>Busy in the afternoon?</b><br /> Most of the Tweets
+									were created either in the morning (6:00AM to 12:00PM) or in
+									the evening (after 6:00PM).</li>
+
+								<li><b>I love Twitter.</b><br /> Mr Tim Watts MP
+									(@TimWattsMP) has tweeted 40,310 Tweets since April 2008.
+									That’s 13.8 Tweets per day! Don’t you have other things to do?</li>
+
+								<li><b>Do I have a Twitter account?</b><br /> Hon Tony
+									Smith MP (@TonySmithMP) has never Tweeted since he created his
+									Twitter account.</li>
+
+								<li><b>I am the leader.</b><br /> Hon Bill Shorten MP
+									(@billshortenmp) has the largest number of followers (137,000
+									followers).</li>
+
+								<li><b>Don’t stalk me!</b><br /> Most of the Tweets from
+									the politicians were geo disabled. Only 227 of 62,215 Tweets
+									were geo enabled.</li>
+							</ul>
+							<p>&nbsp;</p>
+
+
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Close</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<!-- /.modal -->
+
+
+
+		</div>
+		<!-- /row -->
+		<br>
+	</div>
+	<!-- /row -->
+	</div>
+	<!-- /container -->
+
+
+
+	<!-- ==== A little bit of comments section ==== -->
+	<div class="container">
+		<br>
+		<div class="row">
+			<br>
+			<h1 class="centered">A little bit of comments...</h1>
+			<hr>
+			<br>
+		</div>
+		<!-- /row -->
+
+		<div class="row">
+			<div class="col-lg-6 blog-bg">
+				<div class="col-lg-4 centered">
+					<br>
+					<p>
+						<img class="img img-circle" src="assets/img/team/team03.jpg"
+							width="60px" height="60px">
+					</p>
+					<h4>Jing Feng Zhang</h4>
+					<h5>Think positive like a politician</h5>
+
+				</div>
+				<div class="col-lg-8 blog-content">
+					<h2>Project Background</h2>
+					<p>We choose this topic is because of the coming Federal
+						Election in 2016. We like to see if we can tell some interesting
+						stories about those MPs and their followers by analyzing their
+						Twitter activities.</p>
+
+					<p>&nbsp;</p>
+
+					<br>
+				</div>
+			</div>
+			<!-- /col -->
+
+			<div class="col-lg-6 blog-bg">
+				<div class="col-lg-4 centered">
+					<br>
+					<p>
+						<img class="img img-circle" src="assets/img/team/team05.jpg"
+							width="60px" height="60px">
+					</p>
+					<h4>Min Ying Chen</h4>
+					<h5>I like big data</h5>
+				</div>
+				<div class="col-lg-8 blog-content">
+					<h2>Technical Difficulty</h2>
+					<p>We are quite surpised about the results because some of
+						results are totally different as we aspect. Please note some of
+						the results are static only due to the loading time will take
+						forever, which would affect the overall user experience.</p>
+
+					<br /> <br />
+
+
+				</div>
+			</div>
+			<!-- /col -->
+		</div>
+		<!-- /row -->
+		<br> <br>
+	</div>
+	<!-- /container -->
+
+
+
+
+	<div id="footerwrap">
+		<div class="container"></div>
+	</div>
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+
+
+	<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="assets/js/retina.js"></script>
+	<script type="text/javascript" src="assets/js/jquery.easing.1.3.js"></script>
+	<script type="text/javascript" src="assets/js/smoothscroll.js"></script>
+	<script type="text/javascript" src="assets/js/jquery-func.js"></script>
+</body>
+</html>

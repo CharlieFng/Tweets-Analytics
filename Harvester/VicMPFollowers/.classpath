@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="C:/Users/Eins/Google Drive/Git/VicMPFollowers/lib/args4j-2.33.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Eins/Google Drive/Git/VicMPFollowers/lib/commons-codec-1.9.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Eins/Google Drive/Git/VicMPFollowers/lib/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Eins/Google Drive/Git/VicMPFollowers/lib/fluent-hc-4.5.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Eins/Google Drive/Git/VicMPFollowers/lib/geonames-1.1.13.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Eins/Google Drive/Git/VicMPFollowers/lib/gson-2.6.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Eins/Google Drive/Git/VicMPFollowers/lib/httpclient-4.5.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Eins/Google Drive/Git/VicMPFollowers/lib/httpclient-cache-4.5.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Eins/Google Drive/Git/VicMPFollowers/lib/httpclient-win-4.5.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Eins/Google Drive/Git/VicMPFollowers/lib/httpcore-4.4.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Eins/Google Drive/Git/VicMPFollowers/lib/httpmime-4.5.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Eins/Google Drive/Git/VicMPFollowers/lib/jdom-1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Eins/Google Drive/Git/VicMPFollowers/lib/jna-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Eins/Google Drive/Git/VicMPFollowers/lib/jna-platform-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Eins/Google Drive/Git/VicMPFollowers/lib/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Eins/Google Drive/Git/VicMPFollowers/lib/lightcouch-0.1.8.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Eins/Google Drive/Git/VicMPFollowers/lib/opencsv-3.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Eins/Google Drive/Git/VicMPFollowers/lib/twitter4j-async-4.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Eins/Google Drive/Git/VicMPFollowers/lib/twitter4j-core-4.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Eins/Google Drive/Git/VicMPFollowers/lib/twitter4j-examples-4.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Eins/Google Drive/Git/VicMPFollowers/lib/twitter4j-media-support-4.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Eins/Google Drive/Git/VicMPFollowers/lib/twitter4j-stream-4.0.4.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

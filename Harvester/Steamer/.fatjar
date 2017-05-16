@@ -1,0 +1,14 @@
+#Fat Jar Configuration File
+#Tue Apr 26 00:40:37 AEST 2016
+onejar.license.required=true
+manifest.classpath=
+manifest.removesigners=true
+onejar.checkbox=false
+jarname=Streaming.jar
+manifest.mergeall=true
+manifest.mainclass=harvester.Harvester
+manifest.file=<createnew>
+jarname.isextern=false
+onejar.expand=
+excludes=
+includes=

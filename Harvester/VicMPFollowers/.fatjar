@@ -1,0 +1,14 @@
+#Fat Jar Configuration File
+#Fri Apr 29 16:56:02 AEST 2016
+onejar.license.required=true
+manifest.classpath=
+manifest.removesigners=true
+onejar.checkbox=false
+jarname=VicMPFollowers.jar
+manifest.mergeall=true
+manifest.mainclass=MPFollowers.Harvester
+manifest.file=<createnew>
+jarname.isextern=false
+onejar.expand=
+excludes=
+includes=

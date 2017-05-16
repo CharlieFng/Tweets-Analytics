@@ -1,0 +1,212 @@
+---  
+- hosts: cloudHost
+  sudo: yes
+  sudo_user: root
+  tasks:
+    - name: update
+      apt: update_cache=yes
+
+# mount the volume to the instance
+    - name: create a directory volume
+      file: path=/home/ubuntu/volume state=directory     
+    - name: create a directory database
+      file: path=/home/ubuntu/volume/database state=directory
+    - name: format disk as ext4
+      filesystem: fstype=ext4 dev=/dev/vdb
+    - name: mount volume
+      mount: name=/home/ubuntu/volume/ src=/dev/vdb fstype=ext4 state=mounted
+
+
+
+# install needed application
+    - name: Install apache2
+      apt: pkg=apache2 state=latest
+    - name: Install php5
+      apt: pkg=php5 state=latest
+    - name: Install libapache2-mod-php5
+      apt: pkg=libapache2-mod-php5 state=latest
+    - name: Install php5-mcrypt
+      apt: pkg=php5-mcrypt state=latest
+    - name: Install php5-curl
+      apt: pkg=php5-curl state=latest
+    - name: Install php5-imagick
+      apt: pkg=php5-imagick state=latest
+    - name: Install php5-cli
+      apt: pkg=php5-cli state=latest  
+    - name: Install wordpress
+      apt: pkg=wordpress state=latest
+    - name: Install couchDB
+      apt: pkg=couchdb state=latest
+    - name: Install python-couchDB
+      apt: pkg=python-couchdb state=latest
+    - name: Install java
+      apt: pkg=openjdk-8-jre-headless state=latest
+    - name: Install make
+      apt: pkg=make
+    - name: Install vim
+      apt: pkg=vim
+    - name: Install Supervisor
+      command: easy_install supervisor
+    - name: Get verx
+      command: > 
+          wget http://dl.bintray.com/vertx/downloads/vert.x-2.1.5.tar.gz
+          creates=vert.x-2.1.5.tar.gz
+    - name: Unpack verx
+      command: > 
+          tar xzf vert.x-2.1.5.tar.gz
+          creates=vert.x-2.1.5
+    - name: Install verx
+      shell: > 
+          ./configure && make;
+          ldconfig
+          chdir=vert.x-2.1.5
+    - name: Install curl
+      apt: pkg=curl state=latest
+      
+      
+
+# change the config of couchdb and apache2
+    - name: change port number
+      lineinfile: dest=/etc/couchdb/default.ini
+                  regexp='^port'
+                  insertafter="^uuid"
+                  line="port = 5984"
+    - name: change bind_address
+      lineinfile: dest=/etc/couchdb/default.ini
+                  regexp='^bind_address'
+                  insertafter="^uuid"
+                  line="bind_address = 0.0.0.0"
+    - name: add directory for directory
+      lineinfile: dest=/etc/couchdb/default.ini
+                  regexp="^database_dir"
+                  insertafter="^uuid"
+                  line="database_dir = /home/ubuntu/volume/database"
+                  
+    - name: add directory for directory
+      lineinfile: dest=/etc/couchdb/default.ini
+                  regexp="^view_index_dir"
+                  insertafter="^uuid"
+                  line="view_index_dir = /home/ubuntu/volume/database"
+
+    - name: change authority of couchdb directory
+      file: path=/home/ubuntu/volume/database owner=couchdb group=couchdb mode=0755 state=directory recurse=yes                  
+
+    - name: write access directory in alias
+      lineinfile: dest=/etc/apparmor.d/tunables/alias
+                  regexp=''
+                  insertafter=EOF
+                  line="alias /var/lib/couchdb/ -> /home/ubuntu/volume/database/"
+                  
+    - name: copy couchdb directory
+      shell: cp -R -p /var/lib/couchdb/ /home/ubuntu/volume/database/
+      
+    - name: Change PATH for vertx
+      shell: >
+          PATH=$PATH:/home/ubuntu/vert.x-2.1.5/bin
+          
+    - name: create a directory web
+      file: path=/home/ubuntu/volume/web state=directory    
+               
+    - name: change apache2 config
+      replace: dest=/etc/apache2/apache2.conf
+               regexp='^<Directory\ /var/www/>'
+               replace="<Directory /home/ubuntu/volume/web>" backup=yes
+                  
+    - name: change apache2 config
+      replace: dest=/etc/apache2/sites-available/000-default.conf
+               regexp='[\t\ ]+DocumentRoot\ /var/www/html'
+               replace="\nDocumentRoot /home/ubuntu/volume/web"                
+                  
+    - name: change apache2 config
+      replace: dest=/etc/apache2/mods-enabled/dir.conf
+               regexp='^[\ \t]+DirectoryIndex\ index.html\ index.cgi\ index.pl\ index.php\ index.xhtml\ index.htm'
+               replace="DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm" backup=yes
+                  
+    - name: Configure Supervisor
+      shell: echo_supervisord_conf > /home/ubuntu/supervisord.conf
+    - name: change config file of supervisord
+      lineinfile: dest=/home/ubuntu/supervisord.conf
+                  regexp=''
+                  insertafter=EOF
+                  line="[program:new_york_harvester_historical]\ncommand=/home/ubuntu/vertx/bin/vertx runzip /home/ubuntu/NYHarvester-0.2-mod.zip -conf /home/ubuntu/scott_h.json\nstdout_logfile=/home/ubuntu/new_york_harvester_historical.out.log\nstderr_logfile=/home/ubuntu/new_york_harvester_historical.err.log\n\n[program:new_york_harvester_latest]\ncommand=/home/ubuntu/vertx/bin/vertx runzip /home/ubuntu/NYHarvester-0.2-mod.zip -conf /home/ubuntu/scott_l.json\nstdout_logfile=/home/ubuntu/new_york_harvester_latest.out.log\nstderr_logfile=/home/ubuntu/new_york_harvester_latest.err.log"
+                  
+    - name: restart a service couchdb
+      service: name=couchdb state=restarted
+    - name: restart a service apache2
+      service: name=apache2 state=restarted
+
+
+#get PHP-on-Couch
+    - name: Get couch.php
+      command: > 
+          wget https://github.com/dready92/PHP-on-Couch/blob/master/lib/couch.php
+    - name: Get couchAdmin.php
+      command: >   
+          wget https://github.com/dready92/PHP-on-Couch/blob/master/lib/couchAdmin.php
+    - name: Get couchDocument.php
+      command: > 
+          wget https://github.com/dready92/PHP-on-Couch/blob/master/lib/couchDocument.php
+    - name: Get couchClient.php
+      command: > 
+          wget https://github.com/dready92/PHP-on-Couch/blob/master/lib/couchClient.php
+    - name: Get couchReplicator.php
+      command: > 
+          wget https://github.com/dready92/PHP-on-Couch/blob/master/lib/couchReplicator.php
+
+
+
+# install all the python-package, python and pip
+    - name: Install python
+      apt: pkg=python state=latest
+    - name: install pip
+      apt: pkg=python-pip state=latest
+    - name: install nltk via pip
+      pip: name=nltk
+      
+      
+      
+      
+# copy file to remote VM machine
+#    - copy: src=/Users/fengsiyu/Documents/TestRMI/HelloWorld.jar dest=/home/ubuntu/volume/
+    
+
+
+# execute a command on a remote node
+#    - name: execute jar file
+#      command: java -jar /home/ubuntu/volume/HelloWorld.jar /home/ubuntu/volume/database/result.txt
+      
+
+
+# unpacks an archive after (optionally) copying it from the source.
+    - name: download the web file from url,then unpack it
+      unarchive: src=http://115.146.94.241/web.tar dest=/home/ubuntu/volume/web/  mode=0755 copy=no
+
+# execute a command on a remote node
+#    - name: download file from http to remote nodes
+#      get_url: url=http://115.146.94.241/web.tar dest=/home/ubuntu/volume/web/ force=yes
+     
+      
+# upzip the download tar file
+#    - name: unzip the website file
+#      command: sudo tar -xf /home/ubuntu/volume/web/web.tar
+
+
+
+# unpacks an archive after (optionally) download it from the website.
+    - name: download the harverser file from url,then unpack it
+      unarchive: src=http://115.146.94.241/harvester.tar dest=/home/ubuntu/  mode=0755 copy=no
+
+
+# execute a command on a remote node
+#    - name: download file from http to remote nodes
+#      get_url: url=http://115.146.94.241/harveser.tar dest=/home/ubuntu/ force=yes
+
+
+# upzip the download tar file
+#    - name: unzip the jar file
+#      command: tar -xf /home/ubuntu/harveser.tar
+
+
+# execute harverser procudure
+    - name: collecting twitters to specific database
+      command: java -jar /home/ubuntu/VicMPs.jar -h localhost -d politican -a 10 -t 137198586 -p labor
